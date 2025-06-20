@@ -5,3 +5,4 @@ __pycache__/
 pg_data/
 *.sqlite3
 .DS_Store
+
