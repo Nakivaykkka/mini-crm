@@ -1,27 +1,33 @@
-# Mini CRM API
+# mini_CRM_app
 
-Мини-CRM на FastAPI с авторизацией по JWT, PostgreSQL, тестами и Docker.
+Мой первый pet-проект на FastAPI — простой mini CRM с асинхронной архитектурой, базовой безопасностью и тестами.
 
----
+## О чём проект
 
-## Технологии
+Минималистичная CRM-система для учёта пользователей, клиентов и сделок. Всё делал сам, чтобы разобраться, как строится бэкенд “с нуля”:  
+- Асинхронный FastAPI + SQLAlchemy (async)  
+- Alembic для миграций  
+- Docker и Docker Compose для запуска  
+- Валидация и базовые проверки  
+- JWT для авторизации  
+- Всё разбито по модулям (user, client, deal, security, core)  
+- Права через Enum ролей (user, manager, admin, superuser)
 
-- Python 3.12
-- FastAPI
-- PostgreSQL 15
-- SQLAlchemy 2.0
-- Pydantic v2
-- Alembic
-- Docker / Docker Compose
-- Pytest
-- GitHub Actions (CI)
-
----
-
-## Как запустить проект
-
-### 1. Клонируй репозиторий
+## Как запустить
 
 ```bash
-git clone https://github.com/<твой-юзернейм>/mini-crm.git
-cd mini-crm
+# Клонируй проект
+git clone https://github.com/yourusername/mini_CRM_app.git
+cd mini_CRM_app
+
+# Создай .env на основе .env.example (или сразу свой)
+cp .env.example .env
+
+# Собери и подними всё через Docker
+docker-compose up --build -d
+
+# Накати миграции внутри контейнера
+docker-compose exec app alembic upgrade head
+
+# Проверь работу через Swagger
+# По умолчанию: http://localhost:8000/docs

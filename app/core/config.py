@@ -1,12 +1,11 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from functools import lru_cache
 from pathlib import Path
 
-
-class Settings(BaseSettings):
+class Setting(BaseSettings):
     SECRET_KEY: str
     ALGORITHM: str
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 15
+    REFRESH_TOKEN_EXPIRE_DAYS: int = 7
 
     POSTGRES_USER: str
     POSTGRES_PASSWORD: str
@@ -14,10 +13,11 @@ class Settings(BaseSettings):
     SQLALCHEMY_DATABASE_URL: str
 
     model_config = SettingsConfigDict(
-        env_file=Path(__file__).resolve().parent.parent.parent / ".env",  # 👈 абсолютный путь к .env
+        env_file=Path(__file__).resolve().parent.parent.parent / ".env",  
         extra="forbid"
     )
 
 def get_settings():
-    return Settings()
+    return Setting()
 
+settings = get_settings()
