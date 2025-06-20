@@ -17,7 +17,7 @@
 
 ```bash
 # Клонируй проект
-git clone https://github.com/yourusername/mini_CRM_app.git
+git clone https://github.com/Nakivaykkka/mini-crm.git
 cd mini_CRM_app
 
 # Создай .env на основе .env.example (или сразу свой)

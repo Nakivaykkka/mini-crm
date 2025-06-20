@@ -1,1 +1,7 @@
 .env
+*.pyc
+__pycache__/
+.pytest_cache/
+pg_data/
+*.sqlite3
+.DS_Store
